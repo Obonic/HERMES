@@ -1,5 +1,5 @@
 Project Hermes
 
-Updated Keyboard for Humanity.
+Gematria Calculator for English, Greek and Hebrew.
 
-Speeds up comunication via text.
+Please ask befor contributing to this project. 
