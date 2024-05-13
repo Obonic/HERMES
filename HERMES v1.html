@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gematria Calculator with Letter Buttons</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  #value-display {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  #text-field {
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .button-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .circle {
+    position: absolute;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+  }
+  .button {
+    position: absolute;
+    width: 50px; /* Increased size */
+    height: 50px; 
+    border-radius: 50%;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 18px; 
+    text-align: center;
+    line-height: 50px; /* Center vertically */
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .button:hover {
+    transform: scale(1.2);
+  }
+</style>
+</head>
+<body>
+
+<div id="value-display">VALUE: 0</div>
+
+<input type="text" id="text-field" placeholder="Type here..." oninput="calculateTotalValue()">
+
+<button onclick="clearTextField()">Clear Text</button>
+<br>
+<div>
+  <label for="language-select">Select Language:</label>
+  <select id="language-select" onchange="changeLanguage()">
+    <option value="english" selected>English</option>
+    <option value="greek">Greek</option>
+    <option value="hebrew">Hebrew</option>
+  </select>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
+
+<div class="button-container">
+  <div class="circle" style="width: 161px; height: 161px;"></div>
+  <div class="circle" style="width: 322px; height: 322px;"></div>
+  <div class="circle" style="width: 475px; height: 475px;"></div>
+
+  <br><br><br>
+  <!-- ENGLISH -->
+  <!-- English Small circle buttons -->
+  <div class="button" style="top: -60px; left: -25px;" data-letter="A" onclick="appendToTextField('A')">A</div>
+  <div class="button" style="top: -20px; left: -80px;" data-letter="E" onclick="appendToTextField('E')">E</div>
+  <div class="button" style="top: 50px; left: 10px;" data-letter="I" onclick="appendToTextField('I')">I</div>
+  <div class="button" style="top: 50px; left: -60px;" data-letter="O" onclick="appendToTextField('O')">O</div>
+  <div class="button" style="top: -20px; left: 30px;" data-letter="U" onclick="appendToTextField('U')">U</div>
+
+  <!-- English Medium circle buttons -->
+  <div class="button" style="top: -140px; left: -25px;" data-letter="G" onclick="appendToTextField('G')">G</div>
+  <div class="button" style="top: -100px; left: 70px;" data-letter="F" onclick="appendToTextField('F')">F</div>
+  <div class="button" style="top: 0px; left: 115px;" data-letter="L" onclick="appendToTextField('L')">L</div>
+  <div class="button" style="top: 100px; left: 75px;" data-letter="J" onclick="appendToTextField('J')">J</div>
+  <div class="button" style="top: 140px; left: -25px;" data-letter="H" onclick="appendToTextField('H')">H</div>
+  <div class="button" style="top: 100px; left: -125px;" data-letter="B" onclick="appendToTextField('B')">B</div>
+  <div class="button" style="top: 0px; left: -165px;" data-letter="S" onclick="appendToTextField('S')">S</div>
+  <div class="button" style="top: -100px; left: -120px;" data-letter="D" onclick="appendToTextField('D')">D</div>
+
+  <!-- English Large circle buttons -->
+  <div class="button" style="top: -215px; left: -25px;" data-letter="Z" onclick="appendToTextField('Z')">Z</div>
+  <div class="button" style="top: -195px; left: 60px;" data-letter="Y" onclick="appendToTextField('Y')">Y</div>
+  <div class="button" style="top: -145px; left: 130px;" data-letter="X" onclick="appendToTextField('X')">X</div>
+  <div class="button" style="top: -60px; left: 180px;" data-letter="W" onclick="appendToTextField('W')">W</div>
+  <div class="button" style="top:  60px; left: 180px;" data-letter="M" onclick="appendToTextField('M')">M</div>
+  <div class="button" style="top: 150px; left: 130px;" data-letter="N" onclick="appendToTextField('N')">N</div>
+  <div class="button" style="top: 210px; left: 30px;" data-letter="R" onclick="appendToTextField('R')">R</div>
+  <div class="button" style="top: 210px; left: -80px;" data-letter="Q" onclick="appendToTextField('Q')">Q</div>
+  <div class="button" style="top: 150px; left: -180px;" data-letter="P" onclick="appendToTextField('P')">P</div>
+  <div class="button" style="top:  60px; left: -230px;" data-letter="T" onclick="appendToTextField('T')">T</div>
+  <div class="button" style="top: -60px; left: -230px;" data-letter="V" onclick="appendToTextField('V')">V</div>
+  <div class="button" style="top: -145px; left: -180px;" data-letter="C" onclick="appendToTextField('C')">C</div>
+  <div class="button" style="top: -195px; left: -110px;" data-letter="K" onclick="appendToTextField('K')">K</div>
+
+
+  <!-- GREEK -->
+  <!-- Greek Small circle buttons -->
+  <div class="button" style="top: -60px; left: -25px; display: none;" data-letter="Α" onclick="appendToTextField('Α')">Α</div>
+  <div class="button" style="top: -20px; left: -80px; display: none;" data-letter="Ε" onclick="appendToTextField('Ε')">Ε</div>
+  <div class="button" style="top: 50px; left: 10px; display: none;" data-letter="Ι" onclick="appendToTextField('Ι')">Ι</div>
+  <div class="button" style="top: 50px; left: -60px; display: none;" data-letter="Ο" onclick="appendToTextField('Ο')">Ο</div>
+  <div class="button" style="top: -20px; left: 30px; display: none;" data-letter="Υ" onclick="appendToTextField('Υ')">Υ</div>
+
+  <!-- Greek Medium circle buttons -->
+  <div class="button" style="top: -140px; left: -25px;" data-letter="Γ" onclick="appendToTextField('Γ')">Γ</div>
+  <div class="button" style="top: -100px; left: 70px;" data-letter="Φ" onclick="appendToTextField('Φ')">Φ</div>
+  <div class="button" style="top: 0px; left: 115px;" data-letter="Λ" onclick="appendToTextField('Λ')">Λ</div>
+  <div class="button" style="top: 100px; left: 75px;" data-letter="Η" onclick="appendToTextField('Η')">Η</div>
+  <div class="button" style="top: 140px; left: -25px;" data-letter="Β" onclick="appendToTextField('Β')">Β</div>
+  <div class="button" style="top: 100px; left: -125px;" data-letter="Σ" onclick="appendToTextField('Σ')">Σ</div>
+  <div class="button" style="top: 0px; left: -165px;" data-letter="Δ" onclick="appendToTextField('Δ')">Δ</div>
+  <div class="button" style="top: -100px; left: -120px;" data-letter="Κ" onclick="appendToTextField('Κ')">Κ</div>   
+
+  <!-- Greek Large circle buttons -->
+  <div class="button" style="top: -215px; left: -25px;" data-letter="Ω" onclick="appendToTextField('Ω')">Ω</div>
+  <div class="button" style="top: -195px; left: 60px;" data-letter="Ψ" onclick="appendToTextField('Ψ')">Ψ</div>
+  <div class="button" style="top: -145px; left: 130px;" data-letter="Χ" onclick="appendToTextField('Χ')">Χ</div>
+  <div class="button" style="top: -60px; left: 180px;" data-letter="Τ" onclick="appendToTextField('Τ')">Τ</div>
+  <div class="button" style="top:  60px; left: 180px;" data-letter="Ρ" onclick="appendToTextField('Ρ')">Ρ</div>
+  <div class="button" style="top: 150px; left: 130px;" data-letter="Π" onclick="appendToTextField('Π')">Π</div>
+  <div class="button" style="top: 210px; left: 30px;" data-letter="C" onclick="appendToTextField('C')">C</div>  <!-- MISSING -->
+  <div class="button" style="top: 210px; left: -80px;" data-letter="Z" onclick="appendToTextField('Z')">Z</div>  <!-- MISSING -->
+  <div class="button" style="top: 150px; left: -180px;" data-letter="Ν" onclick="appendToTextField('Ν')">Ν</div>
+  <div class="button" style="top:  60px; left: -230px;" data-letter="Μ" onclick="appendToTextField('Μ')">T</div>
+  <div class="button" style="top: -60px; left: -230px;" data-letter="Λ" onclick="appendToTextField('Λ')">V</div>
+  <div class="button" style="top: -145px; left: -180px;" data-letter="Ο" onclick="appendToTextField('Ο')">Ο</div>
+  <div class="button" style="top: -195px; left: -110px;" data-letter="Ξ" onclick="appendToTextField('Ξ')">Ξ</div>
+
+
+  <!-- HEBREW -->
+  <!-- Hebrew Small circle buttons -->
+  <div class="button" style="top: -60px; left: -25px; display: none;" data-letter="א" onclick="appendToTextField('א')">א</div>
+  <div class="button" style="top: -20px; left: -80px; display: none;" data-letter="ב" onclick="appendToTextField('ב')">ב</div>
+  <div class="button" style="top: 50px; left: 10px; display: none;" data-letter="י" onclick="appendToTextField('י')">י</div>
+  <div class="button" style="top: 50px; left: -60px; display: none;" data-letter="ו" onclick="appendToTextField('ו')">ו</div>
+  <div class="button" style="top: -20px; left: 30px; display: none;" data-letter="ה" onclick="appendToTextField('ה')">ה</div>
+
+  <!-- Hebrew Medium circle buttons -->
+  <div class="button" style="top: -140px; left: -25px;" data-letter="ג" onclick="appendToTextField('ג')">ג</div>
+  <div class="button" style="top: -100px; left: 70px;" data-letter="ס" onclick="appendToTextField('ס')">ס</div>
+  <div class="button" style="top: 0px; left: 115px;" data-letter="ל" onclick="appendToTextField('ל')">ל</div>
+  <div class="button" style="top: 100px; left: 75px;" data-letter="כ" onclick="appendToTextField('כ')">כ</div>
+  <div class="button" style="top: 140px; left: -25px;" data-letter="מ" onclick="appendToTextField('מ')">מ</div>
+  <div class="button" style="top: 100px; left: -125px;" data-letter="נ" onclick="appendToTextField('נ')">נ</div>
+  <div class="button" style="top: 0px; left: -165px;" data-letter="פ" onclick="appendToTextField('פ')">פ</div>
+  <div class="button" style="top: -100px; left: -120px;" data-letter="ד" onclick="appendToTextField('ד')">ד</div>
+
+  <!-- Hebrew Large circle buttons -->
+  <div class="button" style="top: -215px; left: -25px;" data-letter="ש" onclick="appendToTextField('ש')">ש</div>
+  <div class="button" style="top: -195px; left: 60px;" data-letter="ר" onclick="appendToTextField('ר')">ר</div>
+  <div class="button" style="top: -145px; left: 130px;" data-letter="ק" onclick="appendToTextField('ק')">ק</div>
+  <div class="button" style="top: -60px; left: 180px;" data-letter="צ" onclick="appendToTextField('צ')">צ</div>
+  <div class="button" style="top:  60px; left: 180px;" data-letter="ע" onclick="appendToTextField('ע')">ע</div>
+  <div class="button" style="top: 150px; left: 130px;" data-letter="N" onclick="appendToTextField('N')">N</div>  <!-- MISSING FINALS -->
+  <div class="button" style="top: 210px; left: 30px;" data-letter="R" onclick="appendToTextField('R')">R</div>  <!-- MISSING FINALS -->
+  <div class="button" style="top: 210px; left: -80px;" data-letter="Q" onclick="appendToTextField('Q')">Q</div>  <!-- MISSING FINALS -->
+  <div class="button" style="top: 150px; left: -180px;" data-letter="P" onclick="appendToTextField('P')">P</div>  <!-- MISSING FINALS -->
+  <div class="button" style="top:  60px; left: -230px;" data-letter="ט" onclick="appendToTextField('ט')">ט</div>
+  <div class="button" style="top: -60px; left: -230px;" data-letter="ח" onclick="appendToTextField('ח')">ח</div>
+  <div class="button" style="top: -145px; left: -180px;" data-letter="ז" onclick="appendToTextField('ז')">ז</div>
+  <div class="button" style="top: -195px; left: -110px;" data-letter="ת" onclick="appendToTextField('ת')">ת</div>
+
+</div>
+
+<script>
+let language = "english";
+
+const letterValues = {
+  'english': {
+    'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+    'J': 10, 'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18,
+    'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26
+  },
+  'greek': {
+    'Α': 1, 'Β': 2, 'Γ': 3, 'Δ': 4, 'Ε': 5, 'Ζ': 6, 'Η': 7, 'Θ': 8, 'Ι': 9,
+    'Κ': 10, 'Λ': 20, 'Μ': 30, 'Ν': 40, 'Ξ': 50, 'Ο': 60, 'Π': 70, 'Ρ': 80, 'Σ': 90,
+    'Τ': 100, 'Υ': 200, 'Φ': 300, 'Χ': 400, 'Ψ': 500, 'Ω': 600
+  },
+  'hebrew': {
+    'א': 1, 'ב': 2, 'ג': 3, 'ד': 4, 'ה': 5, 'ו': 6, 'ז': 7, 'ח': 8, 'ט': 9,
+    'י': 10, 'כ': 20, 'ל': 30, 'מ': 40, 'נ': 50, 'ס': 60, 'ע': 70, 'פ': 80, 'צ': 90,
+    'ק': 100, 'ר': 200, 'ש': 300, 'ת': 400
+  }
+};
+
+function changeLanguage() {
+  language = document.getElementById("language-select").value;
+  const buttons = document.querySelectorAll(".button");
+  buttons.forEach(button => {
+    const letter = button.dataset.letter;
+    if (letter && letterValues[language][letter]) {
+      button.textContent = letter;
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+  calculateTotalValue();
+}
+
+function calculateTotalValue() {
+  const textFieldValue = document.getElementById('text-field').value.toUpperCase();
+  let totalValue = 0;
+  for (let i = 0; i < textFieldValue.length; i++) {
+    const char = textFieldValue.charAt(i);
+    if (char in letterValues[language]) {
+      totalValue += letterValues[language][char];
+    }
+  }
+  document.getElementById('value-display').textContent = "VALUE: " + totalValue;
+}
+
+function clearTextField() {
+  document.getElementById('text-field').value = "";
+  calculateTotalValue();
+}
+
+function appendToTextField(letter) {
+  document.getElementById('text-field').value += letter;
+  calculateTotalValue();
+}
+</script>
+</body>
+</html>
