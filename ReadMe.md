@@ -1,5 +1,7 @@
-Project Hermes
+Project: HERMES
 
-Gematria Calculator for English, Greek and Hebrew.
+Dedicated to HERMES & THOLETAZ
 
-Please ask befor contributing to this project. 
+Gematria Calculator with syleized keyset for English, Greek, Hebrew & Phoenician.
+
+Email: Obonic@gmail.com
